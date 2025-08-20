@@ -1,433 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Abishma Nepal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<title>Abishma Nepal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('https://images.unsplash.com/photo-1528715471570-3e529e7a1586?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #1f1f1f;
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+/* Rose Petals Animation */
+@keyframes floatPetals {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-1200px) rotate(720deg); opacity: 0; }
+}
+.petals {
+    position: fixed;
+    top: 100%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: url('https://i.postimg.cc/xC2qM2yp/rose-petal.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 9999;
+    animation: floatPetals linear infinite;
+}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: url('https://images.unsplash.com/photo-1528715471570-3e529e7a1586?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: #1f1f1f; /* Darker text color */
-      line-height: 1.6;
-      position: relative;
-    }
+/* Overlay for rose-pink soft glow */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 182, 193, 0.7);
+    z-index: -1;
+}
 
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 192, 203, 0.85); /* Pinkish overlay */
-      z-index: -1;
-    }
+/* Header */
+header {
+    background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 5px solid #fff0f5;
+}
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/flowers.png');
+    opacity: 0.25;
+    z-index: 0;
+}
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+header p {
+    font-size: 1.3rem;
+    position: relative;
+    z-index: 1;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+/* Glow animation for headers */
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #fff0f5, 0 0 10px #ff69b4; }
+    100% { text-shadow: 0 0 15px #fff0f5, 0 0 25px #ff1493; }
+}
 
-    header {
-      background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%); /* Vibrant pink gradient */
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 5px solid #fff0f5;
-    }
+/* Navigation */
+nav {
+    background: #ff99cc;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+nav a {
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+    border-radius: 25px;
+    margin: 5px;
+    position: relative;
+}
+nav a::before {
+    content: '🌸';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+}
+nav a:hover {
+    background: linear-gradient(135deg, #ff4da6, #ff1a8c);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(255, 105, 180,0.6);
+}
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://www.transparenttextures.com/patterns/flowers.png');
-      opacity: 0.3;
-      z-index: 0;
-    }
+/* Sections */
+.section {
+    display: none;
+    padding: 50px;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: rgba(255, 240, 245, 0.97);
+    border-radius: 25px;
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #ffb6d9;
+}
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/flowers.png');
+    opacity: 0.15;
+    z-index: -1;
+}
+.section::after {
+    content: '🌺';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2.5rem;
+    opacity: 0.6;
+    animation: floatUp 3s ease-in-out infinite;
+}
+@keyframes floatUp {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.active {
+    display: block;
+    animation: fadeIn 0.8s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    }
+/* Section Titles */
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: #ff3399;
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+    animation: glow 3s ease-in-out infinite alternate;
+}
+h2::before, h2::after {
+    content: '🌸';
+    font-size: 1.8rem;
+    margin: 0 12px;
+}
 
-    header p {
-      font-size: 1.2rem;
-      position: relative;
-      z-index: 1;
-    }
+/* Profile Pic */
+.profile-pic {
+    width: 100%;
+    max-width: 360px;
+    border-radius: 20px;
+    margin: 25px auto;
+    display: block;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 4px solid #ff99cc;
+}
+.profile-pic:hover {
+    transform: scale(1.08) rotate(1deg);
+    box-shadow: 0 10px 20px rgba(255,105,180,0.5);
+}
 
-    nav {
-      background: #ff99cc; /* Pink navigation bar */
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 15px 0;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+/* Photo Gallery */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 25px 0;
+}
+.photo-gallery img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 3px solid #ffb6d9;
+}
+.photo-gallery img:hover {
+    transform: scale(1.07);
+    box-shadow: 0 12px 25px rgba(255,105,180,0.4);
+}
 
-    nav a {
-      color: white;
-      padding: 15px 30px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      border-radius: 25px;
-      margin: 5px;
-      position: relative;
-    }
+/* Contact Links */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin-top: 25px;
+}
+.contact-links a {
+    color: #ff3399;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 12px 25px;
+    border: 2px solid #ff3399;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.contact-links a::before {
+    content: '🌸';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+}
+.contact-links a:hover {
+    background: linear-gradient(135deg, #ff4da6, #ff1a8c);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(255,105,180,0.5);
+}
 
-    nav a::before {
-      content: '🌸';
-      position courses: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1rem;
-    }
+/* Work Items */
+.work-item {
+    margin: 25px 0;
+    padding: 25px;
+    background: #fff0f5;
+    border-radius: 20px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+}
+.work-item::before {
+    content: '🌷';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.8rem;
+    opacity: 0.6;
+}
+.work-item:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 25px rgba(255,105,180,0.3);
+}
 
-    nav a:hover {
-      background: #ff4da6; /* Darker pink on hover */
-      transform: translateY(-2px);
-    }
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #ff99cc, #ff66b3);
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+    position: relative;
+}
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/flowers.png');
+    opacity: 0.15;
+    z-index: 0;
+}
+footer p {
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+}
 
-    .section {
-      display: none;
-      padding: 40px;
-      max-width: 1200px;
-      margin: 30px auto;
-      background: rgba(255, 245, 250, 0.95); /* Light pinkish background */
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-      position: relative;
-      overflow: hidden;
-      border: 2px solid #ffb6d9;
-    }
-
-    .section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://www.transparenttextures.com/patterns/flowers.png');
-      opacity: 0.2;
-      z-index: -1;
-    }
-
-    .section::after {
-      content: '🌺';
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 2rem;
-      opacity: 0.5;
-    }
-
-    .active {
-      display: block;
-      animation: fadeIn 0.5s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      color: #ff3399;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-align: center;
-      position: relative;
-    }
-
-    h2::before, h2::after {
-      content: '🌸';
-      font-size: 1.5rem;
-      margin: 0 10px;
-    }
-
-    .profile-pic {
-      width: 100%;
-      max-width: 350px;
-      border-radius: 15px;
-      margin: 20px auto;
-      display: block;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      border: 3px solid #ff99cc;
-    }
-
-    .profile-pic:hover {
-      transform: scale(1.05);
-    }
-
-    .photo-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px 0;
-    }
-
-    .photo-gallery img {
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      border: 2px solid #ffb6d9;
-    }
-
-    .photo-gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .contact-links a {
-      color: #ff3399;
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: 500;
-      padding: 10px 20px;
-      border: 2px solid #ff3399;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .contact-links a::before {
-      content: '🌸';
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1rem;
-    }
-
-    .contact-links a:hover {
-      background: #ff3399;
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    .work-item {
-      margin: 20px 0;
-      padding: 20px;
-      background: #fff0f5;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-      position: relative;
-    }
-
-    .work-item::before {
-      content: '🌷';
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      font-size: 1.5rem;
-      opacity: 0.5;
-    }
-
-    .work-item:hover {
-      transform: translateY(-5px);
-    }
-
-    footer {
-      background: #ff99cc;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      position: relative;
-    }
-
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://www.transparenttextures.com/patterns/flowers.png');
-      opacity: 0.2;
-      z-index: 0;
-    }
-
-    footer p {
-      font-size: 0.9rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.5rem;
-      }
-
-      nav a {
-        padding: 10px 20px;
-        font-size: 1rem;
-      }
-
-      .section {
-        padding: 20px;
-        margin: 20px;
-      }
-
-      .photo-gallery {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      }
-    }
-  </style>
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 { font-size: 3rem; }
+    nav a { padding: 12px 20px; font-size: 1rem; }
+    .section { padding: 25px; margin: 20px; }
+    .photo-gallery { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+}
+</style>
 </head>
 <body>
-
 <header>
-  <h1>Abishma Nepal</h1>
-  <p>A Journey of Dreams and Aspirations 🌺</p>
+    <h1>Abishma Nepal</h1>
+    <p>A Journey of Dreams and Aspirations 🌺</p>
 </header>
-
 <nav>
-  <a href="#" onclick="showSection('home')">Home</a>
-  <a href="#" onclick="showSection('about')">About Me</a>
-  <a href="#" onclick="showSection('photos')">Photos</a>
-  <a href="#" onclick="showSection('work')">Work</a>
-  <a href="#" onclick="showSection('contact')">Contact</a>
+    <a href="#" onclick="showSection('home')">Home</a>
+    <a href="#" onclick="showSection('about')">About Me</a>
+    <a href="#" onclick="showSection('photos')">Photos</a>
+    <a href="#" onclick="showSection('work')">Work</a>
+    <a href="#" onclick="showSection('contact')">Contact</a>
 </nav>
 
 <!-- Home Section -->
 <div id="home" class="section active">
-  <h2>Welcome to My World 🌸</h2>
-  <img src="abishma.jpg" alt="Abishma Nepal" class="profile-pic">
-
-  <p>Hello and a heartfelt welcome! 🌼 I’m <strong>Abishma Nepal</strong>, and this website is not just a page — it’s a colorful canvas of my life, my journey, and the cherished memories I hold close to my heart. Through these tabs above, you’ll discover pieces of my story, my passions, and the dreams I continue to pursue. ✨</p>
-
-  <p>From my deep roots in the serene hills of <strong>Palpa</strong> to my growing aspirations in the vibrant city of <strong>Butwal</strong>, every step of my journey has shaped who I am today. I’m here to share my experiences with you, creating a warm, welcoming space filled with positivity and connection. 🌿</p>
-
-  <p>Think of this website as a flower-filled garden 🌸 — each section blooming with stories, ideas, and inspiration. Together, let’s celebrate life, embrace creativity, and walk hand in hand on this ever-beautiful journey. 💫</p>
+    <h2>Welcome to My World 🌸</h2>
+    <img src="abishma.jpg" alt="Abishma Nepal" class="profile-pic">
+    <p>Hello and a heartfelt welcome! 🌼 I’m <strong>Abishma Nepal</strong>, and this website is not just a page — it’s a colorful canvas of my life, my journey, and the cherished memories I hold close to my heart. Through these tabs above, you’ll discover pieces of my story, my passions, and the dreams I continue to pursue. ✨</p>
+    <p>From my deep roots in the serene hills of <strong>Palpa</strong> to my growing aspirations in the vibrant city of <strong>Butwal</strong>, every step of my journey has shaped who I am today. I’m here to share my experiences with you, creating a warm, welcoming space filled with positivity and connection. 🌿</p>
+    <p>Think of this website as a flower-filled garden 🌸 — each section blooming with stories, ideas, and inspiration. Together, let’s celebrate life, embrace creativity, and walk hand in hand on this ever-beautiful journey. 💫</p>
 </div>
-
 
 <!-- About Me Section -->
 <div id="about" class="section">
-  <h2>About Me 🌟</h2>
-  <img src="photo2.jpg" alt="Abishma Nepal" class="profile-pic">
-
-  <p>I was born in the serene village of <strong>Ribdikot Ward No. 07, Palpa</strong>, a place where my earliest memories are deeply rooted in simplicity, warmth, and the natural beauty of the hills. Those beginnings instilled in me values of humility, perseverance, and gratitude that continue to guide me today. 🌿</p>
-
-  <p>My academic journey led me to the bustling city of <strong>Butwal</strong>, where I completed my schooling, +2 level, and Bachelor’s degree. It was here that I not only gained education but also discovered my passions, built lifelong friendships, and cultivated dreams that fuel my ambitions. 🌸</p>
-
-  <p>Today, I serve as a <strong>Documentation Officer</strong> at <em>Right And Associates Education Consultancy</em>, where I dedicate myself to guiding and assisting students in preparing their documents for studying abroad. Nothing brings me greater joy than helping others take a step closer to their dreams and knowing I play a part in their success. ✨</p>
-
-  <p>Beyond work, I find happiness in life’s simple joys — exploring new places, capturing fleeting moments through photography, and immersing myself in the calming embrace of nature. 🌍 Every journey, big or small, reminds me that life is a beautiful adventure meant to be cherished and shared. 💫</p>
+    <h2>About Me 🌟</h2>
+    <img src="photo2.jpg" alt="Abishma Nepal" class="profile-pic">
+    <p>I was born in the serene village of <strong>Ribdikot Ward No. 07, Palpa</strong>, a place where my earliest memories are deeply rooted in simplicity, warmth, and the natural beauty of the hills. Those beginnings instilled in me values of humility, perseverance, and gratitude that continue to guide me today. 🌿</p>
+    <p>My academic journey led me to the bustling city of <strong>Butwal</strong>, where I completed my schooling, +2 level, and Bachelor’s degree. It was here that I not only gained education but also discovered my passions, built lifelong friendships, and cultivated dreams that fuel my ambitions. 🌸</p>
+    <p>Today, I serve as a <strong>Documentation Officer</strong> at <em>Right And Associates Education Consultancy</em>, where I dedicate myself to guiding and assisting students in preparing their documents for studying abroad. Nothing brings me greater joy than helping others take a step closer to their dreams and knowing I play a part in their success. ✨</p>
+    <p>Beyond work, I find happiness in life’s simple joys — exploring new places, capturing fleeting moments through photography, and immersing myself in the calming embrace of nature. 🌍 Every journey, big or small, reminds me that life is a beautiful adventure meant to be cherished and shared. 💫</p>
 </div>
-
 
 <!-- Photos Section -->
 <div id="photos" class="section">
-  <h2>Photo Gallery 📸</h2>
-  <div class="photo-gallery">
-    <img src="abishma.jpg" alt="Exploring Nature">
-    <img src="photo2.jpg" alt="City Adventures">
-    <img src="photo3.jpg" alt="Moments with Friends">
-    <img src="photo4.jpg" alt="Cultural Festivities">
-    <img src="photo5.jpg" alt="Sunset Serenity">
-    <img src="photo6.jpg" alt="Sunset Serenity">
-    <img src="photo1.jpg" alt="Sunset Serenity">
-    <img src="ph1.jpg" alt="Sunset Serenity">
-    <img src="ph2.jpg" alt="Sunset Serenity">
-    <img src="ph3.jpg" alt="Sunset Serenity">
-    <img src="ph4.jpg" alt="Sunset Serenity">
-  </div>
+    <h2>Photo Gallery 📸</h2>
+    <div class="photo-gallery">
+        <img src="abishma.jpg" alt="Exploring Nature">
+        <img src="photo2.jpg" alt="City Adventures">
+        <img src="photo3.jpg" alt="Moments with Friends">
+        <img src="photo4.jpg" alt="Cultural Festivities">
+        <img src="photo5.jpg" alt="Sunset Serenity">
+        <img src="photo6.jpg" alt="Sunset Serenity">
+        <img src="photo1.jpg" alt="Sunset Serenity">
+        <img src="ph1.jpg" alt="Sunset Serenity">
+        <img src="ph2.jpg" alt="Sunset Serenity">
+        <img src="ph3.jpg" alt="Sunset Serenity">
+        <img src="ph4.jpg" alt="Sunset Serenity">
+    </div>
 </div>
 
 <!-- Work Section -->
-<div class="work-item">
-  <h3>📑 Documentation Officer</h3>
-  <p>At <strong>Right & Associates Education Consultancy</strong>, I have been working for the past <strong>two years</strong>, supporting students in achieving their dreams of studying abroad. As a Documentation Officer, my role blends <em>precision, mentorship, and advocacy</em>. I ensure every student’s application is accurate, complete, and aligned with visa requirements. From preparing and reviewing documents to coordinating with institutions and overseeing visa processes, I work diligently to remove obstacles and transform aspirations into opportunities. ✨</p>
+<div id="work" class="section">
+    <div class="work-item">
+        <h3>📑 Documentation Officer</h3>
+        <p>At <strong>Right & Associates Education Consultancy</strong>, I have been working for the past <strong>two years</strong>, supporting students in achieving their dreams of studying abroad. As a Documentation Officer, my role blends <em>precision, mentorship, and advocacy</em>. I ensure every student’s application is accurate, complete, and aligned with visa requirements. From preparing and reviewing documents to coordinating with institutions and overseeing visa processes, I work diligently to remove obstacles and transform aspirations into opportunities. ✨</p>
+    </div>
+    <div class="work-item">
+        <h3>About Right & Associates 🌍</h3>
+        <p><strong>Right & Associates</strong> is a well-established education consultancy with over <strong>two decades of experience</strong>, founded in <strong>2001 in Kathmandu, Nepal</strong>. Since then, it has grown into a trusted name in international education, expanding its presence across Nepal — with branches in <strong>Kathmandu, Butwal, Chitwan, Pokhara</strong>, and more — and internationally, including offices in <strong>Australia</strong>.</p>
+        <p>The consultancy provides <strong>end-to-end support</strong> for students aspiring to study abroad, offering services such as <em>career counseling</em>, <em>course and university selection</em>, <em>documentation and visa assistance</em>, along with <em>pre-departure and post-arrival support</em>. This ensures students feel guided and confident at every step of their journey.</p>
+        <p>At its core, Right & Associates believes in <strong>putting students first</strong>. It emphasizes <strong>tailored guidance</strong>, <strong>transparency</strong>, and a commitment to turning dreams into reality. Counselors and staff receive regular <strong>training and certification</strong>, ensuring they uphold high standards of professionalism, accuracy, and care for each student.</p>
+        <p>With a strong <strong>network of partner universities and colleges</strong> across countries like <strong>Australia, the USA, Canada, the UK, and beyond</strong>, Right & Associates helps students find the right pathway based on their background, goals, and aspirations. Its global reach makes it a reliable companion for those looking to transform their educational journeys. 🌸</p>
+    </div>
+    <div class="work-item">
+        <h3>🎓 Student Support & Guidance</h3>
+        <p>Beyond documentation, I also engage directly with students — providing <strong>personalized one-on-one guidance</strong>, answering their questions, and helping them build the confidence they need to pursue international education successfully. Each student’s success story inspires me to keep making a difference. 🌟</p>
+    </div>
+    <div class="work-item">
+        <h3>🤝 Community Engagement</h3>
+        <p>I actively contribute to <strong>workshops and outreach programs</strong>, helping young learners explore the possibilities of global education. By sharing knowledge about visa processes, documentation, and preparation, I aim to inspire the next generation to dream big and pursue opportunities beyond borders. 💫</p>
+    </div>
 </div>
-
-<div class="work-item">
-  <h3>About Right & Associates 🌍</h3>
-  <p><strong>Right & Associates</strong> is a well-established education consultancy with over <strong>two decades of experience</strong>, founded in <strong>2001 in Kathmandu, Nepal</strong>. Since then, it has grown into a trusted name in international education, expanding its presence across Nepal — with branches in <strong>Kathmandu, Butwal, Chitwan, Pokhara</strong>, and more — and internationally, including offices in <strong>Australia</strong>.</p>
-
-  <p>The consultancy provides <strong>end-to-end support</strong> for students aspiring to study abroad, offering services such as <em>career counseling</em>, <em>course and university selection</em>, <em>documentation and visa assistance</em>, along with <em>pre-departure and post-arrival support</em>. This ensures students feel guided and confident at every step of their journey.</p>
-
-  <p>At its core, Right & Associates believes in <strong>putting students first</strong>. It emphasizes <strong>tailored guidance</strong>, <strong>transparency</strong>, and a commitment to turning dreams into reality. Counselors and staff receive regular <strong>training and certification</strong>, ensuring they uphold high standards of professionalism, accuracy, and care for each student.</p>
-
-  <p>With a strong <strong>network of partner universities and colleges</strong> across countries like <strong>Australia, the USA, Canada, the UK, and beyond</strong>, Right & Associates helps students find the right pathway based on their background, goals, and aspirations. Its global reach makes it a reliable companion for those looking to transform their educational journeys. 🌸</p>
-</div>
-
-<div class="work-item">
-  <h3>🎓 Student Support & Guidance</h3>
-  <p>Beyond documentation, I also engage directly with students — providing <strong>personalized one-on-one guidance</strong>, answering their questions, and helping them build the confidence they need to pursue international education successfully. Each student’s success story inspires me to keep making a difference. 🌟</p>
-</div>
-
-<div class="work-item">
-  <h3>🤝 Community Engagement</h3>
-  <p>I actively contribute to <strong>workshops and outreach programs</strong>, helping young learners explore the possibilities of global education. By sharing knowledge about visa processes, documentation, and preparation, I aim to inspire the next generation to dream big and pursue opportunities beyond borders. 💫</p>
-</div>
-
-
-
 
 <!-- Contact Section -->
 <div id="contact" class="section">
-  <h2>Contact Me</h2>
-  <p>Let’s connect! Reach out to me through the following platforms:</p>
-  <div class="contact-links">
-    <a href="mailto:abishma@example.com">Email: abishmanepal@gmail.com</a>
-    <a href="https://facebook.com/abishma.nepal" target="_blank">Facebook</a>
-    <a href="https://instagram.com/abishma.nepal" target="_blank">Instagram</a>
-    <a href="tel:+9779800000000">Call Me: +977 9800000000</a>
-  </div>
+    <h2>Contact Me</h2>
+    <p>Let’s connect! Reach out to me through the following platforms:</p>
+    <div class="contact-links">
+        <a href="mailto:abishma@example.com">Email: abishmanepal@gmail.com</a>
+        <a href="https://facebook.com/abishma.nepal" target="_blank">Facebook</a>
+        <a href="https://instagram.com/abishma.nepal" target="_blank">Instagram</a>
+        <a href="tel:+9779800000000">Call Me: +977 9800000000</a>
+    </div>
 </div>
 
 <footer>
-  <p>&copy; 2025 Abishma Nepal. Made with 🌸 and passion.</p>
+    <p>&copy; 2025 Abishma Nepal. Made with 🌸 and passion.</p>
 </footer>
 
 <script>
-  function showSection(sectionId) {
+function showSection(sectionId){
     const sections = document.querySelectorAll('.section');
-    sections.forEach(section => section.classList.remove('active'));
+    sections.forEach(s=>s.classList.remove('active'));
     document.getElementById(sectionId).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-</script>
+}
 
+/* Floating rose petals generator */
+function createPetals(){
+    const petal = document.createElement('div');
+    petal.classList.add('petals');
+    petal.style.left = Math.random() * window.innerWidth + 'px';
+    petal.style.animationDuration = (5 + Math.random() * 5) + 's';
+    petal.style.width = (15 + Math.random()*15)+'px';
+    petal.style.height = petal.style.width;
+    document.body.appendChild(petal);
+    setTimeout(()=> petal.remove(), 10000);
+}
+setInterval(createPetals, 500);
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-

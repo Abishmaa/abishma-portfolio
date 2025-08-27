@@ -194,6 +194,35 @@ h2::before, h2::after {
   margin: 0 10px;
 }
 
+/* ✅ Image handling (fix zoom issue) */
+.section img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  object-fit: contain;
+}
+
+/* ✅ Gallery grid */
+.photos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+.photos-grid img {
+  width: 220px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+.photos-grid img:hover {
+  transform: scale(1.05);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .flag, .emblem { height: 48px; } /* scale icons down on mobile */
@@ -201,6 +230,7 @@ h2::before, h2::after {
   header p { font-size: 1.1rem; }
   nav a { padding: 10px 20px; font-size: 1rem; }
   .section { padding: 25px; margin: 20px; }
+  .photos-grid img { width: 140px; }
 }
 </style>
 </head>
@@ -222,6 +252,7 @@ h2::before, h2::after {
   <a href="#" onclick="showSection('work')">Work</a>
   <a href="#" onclick="showSection('contact')">Contact</a>
 </nav>
+
 
 <!-- Home Section -->
 <div id="home" class="section active">
@@ -308,5 +339,6 @@ function showSection(sectionId) {
 
 </body>
 </html>
+
 
 

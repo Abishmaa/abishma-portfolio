@@ -3,13 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Abishma Nepal</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Prevent mobile zoom + make layout stable -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 body {
   font-family: 'Poppins', sans-serif;
@@ -18,6 +26,7 @@ body {
   color: #3b0a0a;
   line-height: 1.6;
   position: relative;
+  touch-action: manipulation; /* prevent double-tap zoom */
 }
 body::before {
   content: '';
@@ -29,6 +38,7 @@ body::before {
   background: rgba(255, 182, 193, 0.85); /* soft rose overlay */
   z-index: -1;
 }
+
 /* Header */
 header {
   background: linear-gradient(135deg, #e63946 0%, #ff4d6d 100%);
@@ -51,34 +61,42 @@ header::before {
   opacity: 0.2;
   z-index: 0;
 }
+
+/* Row with flag, title, emblem */
 .header-content {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 15px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   position: relative;
   z-index: 1;
 }
+
+/* Keep icons same size */
 .flag, .emblem {
   height: 60px;
   width: auto;
+  flex: 0 0 auto;
 }
+
+/* Title sits between the icons */
 header h1 {
   font-family: 'Playfair Display', serif;
   font-size: 4rem;
-  margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
+  line-height: 1.1;
   text-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+  margin: 0 5px;
+  flex: 0 1 auto;
 }
 header p {
   font-size: 1.4rem;
+  margin-top: 10px;
   position: relative;
   z-index: 1;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
 }
+
 /* Navigation */
 nav {
   background: #ff4d6d;
@@ -98,11 +116,13 @@ nav a {
   padding: 12px 28px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.05rem; /* >=16px to avoid iOS zoom */
   transition: all 0.3s ease;
   border-radius: 30px;
   margin: 5px;
   position: relative;
+  touch-action: manipulation; /* prevent double-tap zoom on links */
+  -webkit-tap-highlight-color: transparent;
 }
 nav a::before {
   content: '🌹';
@@ -117,7 +137,8 @@ nav a:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
-/* Sections */
+
+/* Sections (unchanged baseline for later content) */
 .section {
   display: none;
   padding: 50px;
@@ -157,6 +178,7 @@ nav a:hover {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 /* Headings */
 h2 {
   font-family: 'Playfair Display', serif;
@@ -171,9 +193,12 @@ h2::before, h2::after {
   font-size: 1.6rem;
   margin: 0 10px;
 }
+
 /* Responsive */
 @media (max-width: 768px) {
-  header h1 { font-size: 3rem; }
+  .flag, .emblem { height: 48px; } /* scale icons down on mobile */
+  header h1 { font-size: 2.4rem; }
+  header p { font-size: 1.1rem; }
   nav a { padding: 10px 20px; font-size: 1rem; }
   .section { padding: 25px; margin: 20px; }
 }
@@ -283,4 +308,5 @@ function showSection(sectionId) {
 
 </body>
 </html>
+
 

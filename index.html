@@ -19,39 +19,42 @@ body { font-family:'Poppins', sans-serif; line-height:1.6; scroll-behavior: smoo
 
 /* ===== HERO ===== */
 header {
-  height:20vh;
+  height:auto;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
+  padding:40px 20px;
+  background: linear-gradient(135deg, #ff6fb5, #ff8fa3, #ffd6e0);
   position:relative;
   overflow:hidden;
-  background: linear-gradient(135deg, #ff6fb5, #ff8fa3, #ffd6e0);
 }
+
 header h1 {
   font-family:'Playfair Display', serif;
-  font-size:3rem; /* smaller to fit better above nav */
+  font-size:3rem;
   line-height:1.1;
   color:white;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-  margin:0 5px;
+  margin-top:20px;
 }
 
 header p {
-  font-size:1.5rem;
+  font-size:1.2rem;
   color:white;
-  margin-top:15px;
+  margin-top:10px;
   text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
 }
 
 header .profile-pic {
-  width:250px; /* larger profile image */
-  height:400px;
+  width:220px;
+  height:220px;
   border-radius:50%;
-  border:5px solid #ff4d6d;
+  border:6px solid #ff4d6d;
   object-fit:cover;
-  margin-top:15px; /* smaller top margin to move closer to nav */
+  margin-top:15px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.25);
 }
 
 /* Floating petals animation */
@@ -66,39 +69,19 @@ header .profile-pic {
   opacity:0.7;
   animation: floatPetals 8s ease-in-out infinite;
 }
+</style>
+</head>
+<body>
 
-/* ===== NAVIGATION ===== */
-nav {
-  position:sticky;
-  top:0;
-  background: linear-gradient(90deg, #ff6fb5, #ff8fa3, #ff4d6d);
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  padding:15px 0;
-  box-shadow:0 6px 12px rgba(0,0,0,0.15);
-  z-index:999;
-}
-nav a {
-  color:white;
-  padding:12px 25px;
-  margin:5px;
-  border-radius:30px;
-  font-weight:600;
-  transition:0.3s;
-  position:relative;
-}
-nav a::before {
-  content:'🌹';
-  position:absolute;
-  left:8px;
-  top:50%;
-  transform:translateY(-50%);
-}
-nav a:hover {
-  background: linear-gradient(90deg, #ff3b8f, #ff1e5f);
-  transform:translateY(-2px);
-}
+<header>
+  <img src="your-photo.jpg" alt="Abishma Nepal" class="profile-pic">
+  <h1>Abishma Nepal</h1>
+  <p>Official Website</p>
+</header>
+
+</body>
+</html>
+
 
 /* ===== SECTIONS ===== */
 .section {
@@ -295,6 +278,7 @@ function showSection(id){
 
 </body>
 </html>
+
 
 
 

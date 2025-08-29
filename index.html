@@ -15,52 +15,42 @@
 <style>
 /* ===== RESET ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Poppins', sans-serif; line-height:1.6; scroll-behavior: smooth; background:#fff; color:#4d0026; }
-
-/* ===== NAVIGATION ===== */
-nav {
-  position:sticky;
-  top:0;
-  background:#ffccd5;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  padding:10px 0;
-  z-index:1000;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
-nav a {
-  margin:5px 15px;
-  color:#4d0026;
-  font-weight:600;
-  text-decoration:none;
-  padding:8px 15px;
-  border-radius:6px;
-  transition:0.3s;
-}
-nav a:hover, nav a.active { background:#ff4d6d; color:white; }
+body { font-family:'Poppins', sans-serif; line-height:1.6; background:#fff; color:#4d0026; overflow-x:hidden; }
 
 /* ===== HERO ===== */
 header {
-  min-height: 100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
+  padding:30px 20px 20px;
+  background: linear-gradient(135deg, #ff6fb5, #ff8fa3, #ffd6e0);
   position:relative;
   overflow:hidden;
-  background: linear-gradient(135deg, #ff6fb5, #ff8fa3, #ffd6e0);
-  padding:60px 20px 40px;
 }
 header h1 {
   font-family:'Playfair Display', serif;
   font-size:3rem;
   color:white;
-  text-shadow:2px 2px 10px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  margin:15px 0 5px;
 }
-header p { font-size:1.5rem; color:white; margin:15px 0; text-shadow:1px 1px 6px rgba(0,0,0,0.2);}
-header .profile-pic { width:220px; height:220px; border-radius:50%; border:6px solid #ff4d6d; object-fit:cover; box-shadow:0 8px 25px rgba(0,0,0,0.25); margin-top:20px; }
+header p {
+  font-size:1.2rem;
+  color:white;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+  margin-bottom:12px;
+}
+header .profile-pic {
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  border:6px solid #ff4d6d;
+  object-fit:cover;
+  box-shadow:0 8px 25px rgba(0,0,0,0.25);
+  margin-bottom:10px;
+}
 
 /* Floating petals */
 @keyframes floatPetals {
@@ -68,51 +58,120 @@ header .profile-pic { width:220px; height:220px; border-radius:50%; border:6px s
   50%{transform:translateY(-20px) rotate(180deg);}
   100%{transform:translateY(0) rotate(360deg);}
 }
-.petal { position:absolute; font-size:1.6rem; opacity:0.7; animation:floatPetals 10s ease-in-out infinite; }
+.petal {
+  position:absolute;
+  font-size:1.4rem;
+  opacity:0.7;
+  animation: floatPetals 8s ease-in-out infinite;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  text-align:center;
+  background:#fff0f6;
+  padding:12px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+nav a {
+  display:inline-block;
+  margin:0 10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#b71c1c;
+  position:relative;
+  transition:0.3s;
+}
+nav a.active, nav a:hover { color:#ff1e5f; }
+nav a::after {
+  content:"";
+  position:absolute;
+  width:0;
+  height:2px;
+  display:block;
+  margin-top:5px;
+  right:0;
+  background:#ff1e5f;
+  transition:width .3s ease;
+  -webkit-transition:width .3s ease;
+}
+nav a:hover::after {
+  width:100%;
+  left:0;
+  background:#ff1e5f;
+}
 
 /* ===== SECTIONS ===== */
 .section {
   display:none;
-  max-width:1200px;
-  margin:30px auto;
-  padding:40px 30px;
+  max-width:1100px;
+  margin:20px auto;
+  padding:40px;
   background: linear-gradient(135deg, #ffe4ec, #ffd1e3);
   border-radius:20px;
   box-shadow:0 10px 25px rgba(0,0,0,0.12);
+  position:relative;
+  overflow:hidden;
+  animation:backgroundShift 10s ease-in-out infinite alternate;
 }
-.section.active { display:block; animation:fadeIn 0.6s ease-in-out; }
+.section.active { display:block; animation:fadeIn 0.5s ease-in-out; }
+
 @keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
 
-h2 { font-family:'Playfair Display', serif; color:#b71c1c; text-align:center; font-size:2.8rem; margin-bottom:30px; position:relative; }
+/* Soft background animation */
+@keyframes backgroundShift{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* ===== TITLES ===== */
+h2 { font-family:'Playfair Display', serif; color:#b71c1c; text-align:center; font-size:2.8rem; margin-bottom:30px; }
 h2::before, h2::after { content:'🌹'; font-size:1.4rem; margin:0 8px; }
 
 /* ===== PHOTO GRID ===== */
 .photo-gallery { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
-.photo-gallery img { width:220px; height:160px; object-fit:cover; border-radius:12px; transition:transform 0.3s; }
+.photo-gallery img { width:220px; height:160px; object-fit:cover; border-radius:12px; transition:transform 0.3s; cursor:pointer; }
 .photo-gallery img:hover { transform:scale(1.05); }
+
+/* Lightbox */
+#lightboxOverlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); display:none; justify-content:center; align-items:center; z-index:9999; }
+#lightboxOverlay img { max-width:90%; max-height:80%; border-radius:12px; }
 
 /* ===== VIDEO GRID ===== */
 .video-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-.video-grid iframe { width:100%; height:200px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.12); }
+.video-grid iframe { width:100%; height:180px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.12); }
 
 /* ===== TIMELINE ===== */
 .timeline { position:relative; padding-left:28px; }
 .timeline::before { content:''; position:absolute; left:12px; top:0; width:4px; height:100%; background:linear-gradient(180deg, #ff6fb5, #ff4d6d); border-radius:2px; }
-.timeline-item { position:relative; margin-bottom:25px; padding-left:12px; }
-.timeline-item::before { content:'🌸'; position:absolute; left:-2px; top:0; font-size:1.2rem; }
+.timeline-item { position:relative; margin-bottom:22px; padding-left:12px; }
+.timeline-item::before { content:'🌸'; position:absolute; left:-2px; top:0; font-size:1.1rem; }
 
-/* ===== BLOG GRID ===== */
+/* ===== BLOG ===== */
 .blog-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; }
-.blog-card { background:linear-gradient(135deg,#ffb6c1,#ff4d6d); color:white; border-radius:14px; padding:20px; box-shadow:0 8px 18px rgba(0,0,0,0.08); transition:0.3s; }
+.blog-card { background:linear-gradient(135deg, #ffb6c1, #ff4d6d); color:white; border-radius:14px; padding:18px; box-shadow:0 8px 18px rgba(0,0,0,0.08); transition:0.3s; }
 .blog-card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
 
-/* ===== WORK ITEMS ===== */
-.work-item { margin-bottom:25px; padding:25px; background: linear-gradient(135deg,#ffccd5,#ffb6c1); border-radius:12px; box-shadow:0 6px 15px rgba(0,0,0,0.08); transition:0.3s; }
+/* ===== WORK ===== */
+.work-item { margin-bottom:25px; padding:20px; background: linear-gradient(135deg, #ffccd5, #ffb6c1); border-radius:12px; box-shadow:0 6px 15px rgba(0,0,0,0.08); transition:0.3s; }
 .work-item:hover { transform:scale(1.02); }
+
+/* ===== COUNTERS ===== */
+.counters { display:flex; justify-content:center; gap:40px; margin:20px 0; text-align:center; }
+.counter { font-size:2.2rem; font-weight:700; color:#b71c1c; }
+.counter-label { font-size:1rem; margin-top:5px; }
 
 /* ===== CONTACT ===== */
 .contact-links a { display:inline-block; margin:10px 15px; color:#4d0026; font-weight:600; transition:0.3s; }
 .contact-links a:hover { color:#ff1e5f; }
+
+.contact-form { max-width:500px; margin:20px auto; display:flex; flex-direction:column; gap:15px; }
+.contact-form input, .contact-form textarea { padding:10px; border-radius:8px; border:1px solid #ccc; font-size:1rem; width:100%; }
+.contact-form button { background:#ff4d6d; color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-size:1rem; transition:0.3s; }
+.contact-form button:hover { background:#ff1e5f; }
 
 /* ===== FOOTER ===== */
 footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6fb5,#ff4d6d,#ffc0cb); color:white; margin-top:50px; border-radius:15px; }
@@ -120,11 +179,10 @@ footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
   header h1 { font-size:2.5rem; }
-  header p { font-size:1.2rem; }
-  .profile-pic { width:160px; height:160px; }
-  nav a { padding:6px 12px; font-size:0.9rem; }
+  header p { font-size:1.1rem; }
+  nav a { padding:8px 12px; font-size:0.95rem; }
   .photo-gallery img { width:140px; height:120px; }
-  .video-grid iframe { height:160px; }
+  .counters { flex-direction:column; gap:20px; }
 }
 </style>
 </head>
@@ -134,54 +192,64 @@ footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6
   <h1>Abishma Nepal</h1>
   <p>A Journey of Dreams and Aspirations 🌹</p>
   <img src="abishma.jpg" class="profile-pic" alt="Abishma Nepal">
-  <!-- floating petals -->
-  <div class="petal" style="top:15%; left:10%;">🌸</div>
-  <div class="petal" style="top:50%; left:85%;">🌺</div>
-  <div class="petal" style="top:75%; left:35%;">💮</div>
+  <div class="petal" style="top:20%; left:10%;">🌸</div>
+  <div class="petal" style="top:50%; left:80%;">🌺</div>
+  <div class="petal" style="top:70%; left:30%;">💮</div>
 </header>
 
 <nav>
-  <a href="#" class="active" onclick="showSection('home')">Home</a>
-  <a href="#" onclick="showSection('about')">About Me</a>
-  <a href="#" onclick="showSection('portfolio')">Portfolio</a>
-  <a href="#" onclick="showSection('photos')">Photos</a>
-  <a href="#" onclick="showSection('videos')">Videos</a>
-  <a href="#" onclick="showSection('news')">News/Updates</a>
-  <a href="#" onclick="showSection('blog')">Blog/Stories</a>
-  <a href="#" onclick="showSection('work')">Work</a>
-  <a href="#" onclick="showSection('contact')">Contact</a>
+  <a href="#" onclick="showSection('home', this)" class="active">Home</a>
+  <a href="#" onclick="showSection('about', this)">About Me</a>
+  <a href="#" onclick="showSection('portfolio', this)">Portfolio</a>
+  <a href="#" onclick="showSection('photos', this)">Photos</a>
+  <a href="#" onclick="showSection('videos', this)">Videos</a>
+  <a href="#" onclick="showSection('news', this)">News/Updates</a>
+  <a href="#" onclick="showSection('blog', this)">Blog/Stories</a>
+  <a href="#" onclick="showSection('work', this)">Work</a>
+  <a href="#" onclick="showSection('contact', this)">Contact</a>
 </nav>
 
 <!-- ===== HOME ===== -->
 <div id="home" class="section active">
   <h2>Welcome to My World</h2>
-  <p>Hello! I’m <strong>Abishma Nepal</strong>. This website showcases my life, journey, passions, and achievements. Explore to learn more about my experiences and milestones.</p>
-  <p>From my roots in <strong>Palpa</strong> to my aspirations in <strong>Butwal</strong>, every chapter has shaped my personal and professional growth. 🌼</p>
+  <p>Hello and a heartfelt welcome! 🌼 I’m <strong>Abishma Nepal</strong>. This website is a canvas of my life, dreams, and achievements. Here you’ll find my journey from humble beginnings to a growing career and creative pursuits.</p>
+  <p>From the serene hills of <strong>Palpa</strong> to the bustling city of <strong>Butwal</strong>, I strive to inspire and share meaningful experiences. Dive in and explore!</p>
+
+  <!-- Counters -->
+  <div class="counters">
+    <div>
+      <div class="counter" data-target="15">0</div>
+      <div class="counter-label">Projects Completed</div>
+    </div>
+    <div>
+      <div class="counter" data-target="200">0</div>
+      <div class="counter-label">Students Guided</div>
+    </div>
+    <div>
+      <div class="counter" data-target="10">0</div>
+      <div class="counter-label">Workshops Conducted</div>
+    </div>
+  </div>
 </div>
 
 <!-- ===== ABOUT ===== -->
 <div id="about" class="section">
   <h2>About Me 🌟</h2>
-  <div style="display:flex; flex-wrap:wrap; gap:20px; align-items:center;">
-    <img src="photo2.jpg" alt="Abishma Nepal" style="width:250px; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.15);">
-    <div>
-      <p>I was born in <strong>Ribdikot Ward No. 07, Palpa</strong>. Passionate about education, mentoring, and creating meaningful experiences.</p>
-      <p>Currently, I serve as a <strong>Documentation Officer</strong> at <em>Right And Associates Education Consultancy</em>. I help students achieve their academic dreams and provide guidance for professional growth.</p>
-      <p><strong>Skills:</strong> Documentation, Mentorship, Communication, Organization</p>
-      <p><strong>Hobbies:</strong> Photography, Traveling, Blogging, Content Creation</p>
-    </div>
-  </div>
+  <img src="photo2.jpg" alt="Abishma Nepal" style="margin-bottom:15px; width:200px; border-radius:12px;">
+  <p>I was born in the peaceful village of <strong>Ribdikot, Ward No. 07, Palpa</strong>. Growing up, I was passionate about education, creativity, and helping others.</p>
+  <p>Currently, I work as a <strong>Documentation Officer</strong> at <em>Right And Associates Education Consultancy</em>, guiding students through documentation, mentoring, and support. I specialize in communication, coordination, and digital organization.</p>
+  <p><strong>Skills & Interests:</strong> Education consultancy, digital documentation, storytelling, photography, videography, and personal growth.</p>
 </div>
 
 <!-- ===== PORTFOLIO ===== -->
 <div id="portfolio" class="section">
   <h2>Portfolio 💼</h2>
   <div class="timeline">
-    <div class="timeline-item"><strong>Project 1:</strong> Successfully guided 50+ students for abroad studies with full documentation support.</div>
-    <div class="timeline-item"><strong>Project 2:</strong> Created a mentorship program for high school students in Butwal.</div>
-    <div class="timeline-item"><strong>Project 3:</strong> Developed educational content for online workshops and webinars.</div>
-    <div class="timeline-item"><strong>Project 4:</strong> Organized multiple career guidance events in local communities.</div>
-    <div class="timeline-item"><strong>Project 5:</strong> Collaborated with schools for student counseling and career planning.</div>
+    <div class="timeline-item"><strong>Project 1:</strong> Developed an organized documentation system for student applications, improving efficiency by 40%.</div>
+    <div class="timeline-item"><strong>Project 2:</strong> Created multimedia content for workshops and seminars, engaging 500+ students.</div>
+    <div class="timeline-item"><strong>Project 3:</strong> Conducted mentorship sessions for students aspiring to study abroad.</div>
+    <div class="timeline-item"><strong>Project 4:</strong> Designed photo and video projects highlighting local culture and education initiatives.</div>
+    <div class="timeline-item"><strong>Project 5:</strong> Participated in community service projects supporting education and awareness campaigns.</div>
   </div>
 </div>
 
@@ -189,16 +257,16 @@ footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6
 <div id="photos" class="section">
   <h2>Photo Gallery 📸</h2>
   <div class="photo-gallery">
-    <img src="abishma.jpg" alt="">
-    <img src="photo2.jpg" alt="">
-    <img src="photo3.jpg" alt="">
-    <img src="photo4.jpg" alt="">
-    <img src="photo5.jpg" alt="">
-    <img src="ph1.jpg" alt="">
-    <img src="ph2.jpg" alt="">
-    <img src="ph3.jpg" alt="">
-    <img src="ph4.jpg" alt="">
-    <img src="ph5.jpg" alt="">
+    <img src="abishma.jpg" alt="Profile">
+    <img src="photo2.jpg" alt="Workshop">
+    <img src="photo3.jpg" alt="Event">
+    <img src="photo4.jpg" alt="Travel">
+    <img src="photo5.jpg" alt="Seminar">
+    <img src="ph1.jpg" alt="Collaboration">
+    <img src="ph2.jpg" alt="Students">
+    <img src="ph3.jpg" alt="Mentorship">
+    <img src="ph4.jpg" alt="Community Work">
+    <img src="ph5.jpg" alt="Creative Project">
   </div>
 </div>
 
@@ -217,11 +285,10 @@ footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6
 <div id="news" class="section">
   <h2>News & Updates 📰</h2>
   <div class="timeline">
-    <div class="timeline-item"><strong>Jan 2025:</strong> Featured in local newspaper for mentoring achievements.</div>
-    <div class="timeline-item"><strong>Feb 2025:</strong> Organized first online webinar for students abroad guidance.</div>
-    <div class="timeline-item"><strong>Mar 2025:</strong> Started personal blog sharing educational insights.</div>
-    <div class="timeline-item"><strong>Apr 2025:</strong> Completed a workshop on career counseling.</div>
-    <div class="timeline-item"><strong>May 2025:</strong> Participated in community volunteer project.</div>
+    <div class="timeline-item"><strong>Update 1:</strong> Featured in a local newspaper for contributions in education consultancy.</div>
+    <div class="timeline-item"><strong>Update 2:</strong> Organized a workshop for students aspiring to study abroad.</div>
+    <div class="timeline-item"><strong>Update 3:</strong> Released a photo-video project highlighting local culture.</div>
+    <div class="timeline-item"><strong>Update 4:</strong> Recognized for community service in education awareness campaigns.</div>
   </div>
 </div>
 
@@ -229,10 +296,10 @@ footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6
 <div id="blog" class="section">
   <h2>Blog & Stories ✨</h2>
   <div class="blog-grid">
-    <div class="blog-card"><h3>Story 1</h3><p>Sharing my journey of guiding students to achieve their dreams abroad...</p></div>
-    <div class="blog-card"><h3>Story 2</h3><p>How I balance professional work and personal passions for photography...</p></div>
-    <div class="blog-card"><h3>Story 3</h3><p>Lessons learned while mentoring and volunteering in local communities...</p></div>
-    <div class="blog-card"><h3>Story 4</h3><p>Tips for aspiring students to organize and plan their career paths effectively...</p></div>
+    <div class="blog-card"><h3>Story 1</h3><p>Reflections on my journey from Palpa to Butwal, sharing lessons learned and inspiring growth.</p></div>
+    <div class="blog-card"><h3>Story 2</h3><p>Mentorship experiences helping students overcome challenges and achieve their dreams abroad.</p></div>
+    <div class="blog-card"><h3>Story 3</h3><p>Creative multimedia projects showcasing local traditions, festivals, and educational events.</p></div>
+    <div class="blog-card"><h3>Story 4</h3><p>Personal stories of resilience, motivation, and the power of community engagement.</p></div>
   </div>
 </div>
 
@@ -241,42 +308,87 @@ footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6
   <h2>Professional Work 💼</h2>
   <div class="work-item">
     <h3>Documentation Officer</h3>
-    <p>Handling official documentation for student admissions and education consultancy services.</p>
+    <p>Handling all student documentation, application processing, and correspondence. Ensuring accuracy and timely delivery of all documents.</p>
   </div>
   <div class="work-item">
     <h3>Student Support & Guidance</h3>
-    <p>Providing mentorship and guidance for students aiming for international education.</p>
+    <p>One-on-one mentorship sessions for students seeking study opportunities abroad, providing guidance, resources, and encouragement.</p>
   </div>
   <div class="work-item">
-    <h3>Content Development</h3>
-    <p>Creating educational content for workshops, webinars, and online platforms.</p>
+    <h3>Workshops & Seminars</h3>
+    <p>Planning and conducting workshops for students on career planning, education, and personal development.</p>
   </div>
 </div>
 
 <!-- ===== CONTACT ===== -->
 <div id="contact" class="section">
   <h2>Contact Me 📬</h2>
-  <p>Connect through any of the following methods:</p>
+  <p>Feel free to connect with me through any of the channels below or send a direct message:</p>
   <div class="contact-links">
     <a href="mailto:abishmanepal@gmail.com">Email</a>
     <a href="https://facebook.com/abishma.nepal" target="_blank">Facebook</a>
     <a href="https://instagram.com/abishma.nepal" target="_blank">Instagram</a>
     <a href="tel:+9779800000000">Call Me</a>
   </div>
+
+  <form class="contact-form" id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
 </div>
+
+<!-- Lightbox overlay -->
+<div id="lightboxOverlay"><img src="" alt="Enlarged Image"></div>
 
 <footer>
   &copy; 2025 Abishma Nepal. Made with 🌹 and passion.
 </footer>
 
 <script>
-function showSection(id){
-  document.querySelectorAll('.section').forEach(sec=>sec.classList.remove('active'));
+// Section switching
+function showSection(id, link){
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  document.querySelectorAll('nav a').forEach(nav=>nav.classList.remove('active'));
-  event.target.classList.add('active');
+  
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  link.classList.add('active');
   window.scrollTo({top:0, behavior:'smooth'});
 }
+
+// Counters animation
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+  const updateCount = () => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText;
+    const increment = target/200;
+    if(count < target){
+      counter.innerText = Math.ceil(count + increment);
+      setTimeout(updateCount, 20);
+    } else { counter.innerText = target; }
+  };
+  updateCount();
+});
+
+// Lightbox
+const lightboxOverlay = document.getElementById('lightboxOverlay');
+const lightboxImg = lightboxOverlay.querySelector('img');
+document.querySelectorAll('.photo-gallery img').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightboxOverlay.style.display = 'flex';
+  });
+});
+lightboxOverlay.addEventListener('click', () => { lightboxOverlay.style.display = 'none'; });
+
+// Contact form (dummy)
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('Thank you! Your message has been sent.');
+  this.reset();
+});
 </script>
 
 </body>

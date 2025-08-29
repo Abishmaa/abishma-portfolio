@@ -15,50 +15,42 @@
 <style>
 /* ===== RESET ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Poppins', sans-serif; line-height:1.6; scroll-behavior: smooth; background:#fff; color:#4d0026; }
+body { font-family:'Poppins', sans-serif; line-height:1.6; background:#fff; color:#4d0026; }
 
 /* ===== HERO ===== */
 header {
-  height:auto;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:30px 20px 25px; /* tighter top & bottom */
+  padding:30px 20px 20px;
   background: linear-gradient(135deg, #ff6fb5, #ff8fa3, #ffd6e0);
   position:relative;
   overflow:hidden;
 }
-
 header h1 {
   font-family:'Playfair Display', serif;
   font-size:3rem;
-  line-height:1.1;
   color:white;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-  margin-top:15px; /* reduced */
+  margin:15px 0 5px;
 }
-
 header p {
   font-size:1.2rem;
   color:white;
-  margin-top:8px;
   text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+  margin-bottom:12px;
 }
-
 header .profile-pic {
   width:220px;
   height:220px;
   border-radius:50%;
   border:6px solid #ff4d6d;
   object-fit:cover;
-  margin-top:5px;
-  margin-bottom:12px;
   box-shadow:0 8px 25px rgba(0,0,0,0.25);
+  margin-bottom:10px;
 }
-
-/* Floating petals animation */
 @keyframes floatPetals {
   0%{transform:translateY(0) rotate(0deg);}
   50%{transform:translateY(-20px) rotate(180deg);}
@@ -89,24 +81,21 @@ nav a {
   color:#b71c1c;
   transition:0.3s;
 }
-nav a:hover { color:#ff1e5f; }
+nav a.active, nav a:hover { color:#ff1e5f; }
 
 /* ===== SECTIONS ===== */
 .section {
   display:none;
   max-width:1100px;
-  margin:12px auto; /* reduced gap between header/nav & content */
+  margin:20px auto;
   padding:40px;
   background: linear-gradient(135deg, #ffe4ec, #ffd1e3);
   border-radius:20px;
   box-shadow:0 10px 25px rgba(0,0,0,0.12);
-  position:relative;
 }
-
-.section.active { display:block; animation:fadeIn 0.6s ease-in-out; }
+.section.active { display:block; animation:fadeIn 0.5s ease-in-out; }
 @keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
-
-h2 { font-family:'Playfair Display', serif; color:#b71c1c; text-align:center; font-size:2.8rem; margin-bottom:30px; position:relative; }
+h2 { font-family:'Playfair Display', serif; color:#b71c1c; text-align:center; font-size:2.8rem; margin-bottom:30px; }
 h2::before, h2::after { content:'🌹'; font-size:1.4rem; margin:0 8px; }
 
 /* ===== PHOTO GRID ===== */
@@ -144,7 +133,7 @@ footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6
 @media(max-width:768px){
   header h1 { font-size:2.5rem; }
   header p { font-size:1.1rem; }
-  nav a { padding:8px 15px; font-size:0.95rem; }
+  nav a { padding:8px 12px; font-size:0.95rem; }
   .photo-gallery img { width:140px; height:120px; }
 }
 </style>
@@ -155,46 +144,48 @@ footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6
   <h1>Abishma Nepal</h1>
   <p>A Journey of Dreams and Aspirations 🌹</p>
   <img src="abishma.jpg" class="profile-pic" alt="Abishma Nepal">
-  <!-- floating petals -->
   <div class="petal" style="top:20%; left:10%;">🌸</div>
   <div class="petal" style="top:50%; left:80%;">🌺</div>
   <div class="petal" style="top:70%; left:30%;">💮</div>
 </header>
 
 <nav>
-  <a href="#" onclick="showSection('home')">Home</a>
-  <a href="#" onclick="showSection('about')">About Me</a>
-  <a href="#" onclick="showSection('portfolio')">Portfolio</a>
-  <a href="#" onclick="showSection('photos')">Photos</a>
-  <a href="#" onclick="showSection('videos')">Videos</a>
-  <a href="#" onclick="showSection('news')">News/Updates</a>
-  <a href="#" onclick="showSection('blog')">Blog/Stories</a>
-  <a href="#" onclick="showSection('work')">Work</a>
-  <a href="#" onclick="showSection('contact')">Contact</a>
+  <a href="#" onclick="showSection('home', this)" class="active">Home</a>
+  <a href="#" onclick="showSection('about', this)">About Me</a>
+  <a href="#" onclick="showSection('portfolio', this)">Portfolio</a>
+  <a href="#" onclick="showSection('photos', this)">Photos</a>
+  <a href="#" onclick="showSection('videos', this)">Videos</a>
+  <a href="#" onclick="showSection('news', this)">News/Updates</a>
+  <a href="#" onclick="showSection('blog', this)">Blog/Stories</a>
+  <a href="#" onclick="showSection('work', this)">Work</a>
+  <a href="#" onclick="showSection('contact', this)">Contact</a>
 </nav>
 
 <!-- ===== HOME ===== -->
 <div id="home" class="section active">
   <h2>Welcome to My World</h2>
-  <p>Hello and a heartfelt welcome! 🌼 I’m <strong>Abishma Nepal</strong>, and this website is not just a page — it’s a colorful canvas of my life...</p>
-  <p>From my deep roots in the serene hills of <strong>Palpa</strong> to my growing aspirations in the vibrant city of <strong>Butwal</strong>...</p>
+  <p>Hello and a heartfelt welcome! 🌼 I’m <strong>Abishma Nepal</strong>. This website is a canvas of my life, dreams, and achievements. Here you’ll find my journey from humble beginnings to a growing career and creative pursuits.</p>
+  <p>From the serene hills of <strong>Palpa</strong> to the bustling city of <strong>Butwal</strong>, I strive to inspire and share meaningful experiences. Dive in and explore!</p>
 </div>
 
 <!-- ===== ABOUT ===== -->
 <div id="about" class="section">
   <h2>About Me 🌟</h2>
   <img src="photo2.jpg" alt="Abishma Nepal">
-  <p>I was born in the serene village of <strong>Ribdikot Ward No. 07, Palpa</strong>...</p>
-  <p>Today, I serve as a <strong>Documentation Officer</strong> at <em>Right And Associates Education Consultancy</em>...</p>
+  <p>I was born in the peaceful village of <strong>Ribdikot, Ward No. 07, Palpa</strong>. Growing up, I was passionate about education, creativity, and helping others.</p>
+  <p>Currently, I work as a <strong>Documentation Officer</strong> at <em>Right And Associates Education Consultancy</em>, guiding students through documentation, mentoring, and support. I specialize in communication, coordination, and digital organization.</p>
+  <p><strong>Skills & Interests:</strong> Education consultancy, digital documentation, storytelling, photography, videography, and personal growth.</p>
 </div>
 
 <!-- ===== PORTFOLIO ===== -->
 <div id="portfolio" class="section">
   <h2>Portfolio 💼</h2>
   <div class="timeline">
-    <div class="timeline-item"><strong>Project 1:</strong> Description...</div>
-    <div class="timeline-item"><strong>Project 2:</strong> Description...</div>
-    <div class="timeline-item"><strong>Project 3:</strong> Description...</div>
+    <div class="timeline-item"><strong>Project 1:</strong> Developed an organized documentation system for student applications, improving efficiency by 40%.</div>
+    <div class="timeline-item"><strong>Project 2:</strong> Created multimedia content for workshops and seminars, engaging 500+ students.</div>
+    <div class="timeline-item"><strong>Project 3:</strong> Conducted mentorship sessions for students aspiring to study abroad.</div>
+    <div class="timeline-item"><strong>Project 4:</strong> Designed photo and video projects highlighting local culture and education initiatives.</div>
+    <div class="timeline-item"><strong>Project 5:</strong> Participated in community service projects supporting education and awareness campaigns.</div>
   </div>
 </div>
 
@@ -202,16 +193,16 @@ footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6
 <div id="photos" class="section">
   <h2>Photo Gallery 📸</h2>
   <div class="photo-gallery">
-    <img src="abishma.jpg" alt="">
-    <img src="photo2.jpg" alt="">
-    <img src="photo3.jpg" alt="">
-    <img src="photo4.jpg" alt="">
-    <img src="photo5.jpg" alt="">
-    <img src="ph1.jpg" alt="">
-    <img src="ph2.jpg" alt="">
-    <img src="ph3.jpg" alt="">
-    <img src="ph4.jpg" alt="">
-    <img src="ph5.jpg" alt="">
+    <img src="abishma.jpg" alt="Profile">
+    <img src="photo2.jpg" alt="Workshop">
+    <img src="photo3.jpg" alt="Event">
+    <img src="photo4.jpg" alt="Travel">
+    <img src="photo5.jpg" alt="Seminar">
+    <img src="ph1.jpg" alt="Collaboration">
+    <img src="ph2.jpg" alt="Students">
+    <img src="ph3.jpg" alt="Mentorship">
+    <img src="ph4.jpg" alt="Community Work">
+    <img src="ph5.jpg" alt="Creative Project">
   </div>
 </div>
 
@@ -221,24 +212,30 @@ footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6
   <div class="video-grid">
     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 1" allowfullscreen></iframe>
     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 2" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 3" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 4" allowfullscreen></iframe>
   </div>
 </div>
 
-<!-- ===== NEWS ===== -->
+<!-- ===== NEWS/UPDATES ===== -->
 <div id="news" class="section">
   <h2>News & Updates 📰</h2>
   <div class="timeline">
-    <div class="timeline-item"><strong>Update 1:</strong> Important news...</div>
-    <div class="timeline-item"><strong>Update 2:</strong> Important news...</div>
+    <div class="timeline-item"><strong>Update 1:</strong> Featured in a local newspaper for contributions in education consultancy.</div>
+    <div class="timeline-item"><strong>Update 2:</strong> Organized a workshop for students aspiring to study abroad.</div>
+    <div class="timeline-item"><strong>Update 3:</strong> Released a photo-video project highlighting local culture.</div>
+    <div class="timeline-item"><strong>Update 4:</strong> Recognized for community service in education awareness campaigns.</div>
   </div>
 </div>
 
-<!-- ===== BLOG ===== -->
+<!-- ===== BLOG/Stories ===== -->
 <div id="blog" class="section">
   <h2>Blog & Stories ✨</h2>
   <div class="blog-grid">
-    <div class="blog-card"><h3>Story 1</h3><p>Brief intro...</p></div>
-    <div class="blog-card"><h3>Story 2</h3><p>Brief intro...</p></div>
+    <div class="blog-card"><h3>Story 1</h3><p>Reflections on my journey from Palpa to Butwal, sharing lessons learned and inspiring growth.</p></div>
+    <div class="blog-card"><h3>Story 2</h3><p>Mentorship experiences helping students overcome challenges and achieve their dreams abroad.</p></div>
+    <div class="blog-card"><h3>Story 3</h3><p>Creative multimedia projects showcasing local traditions, festivals, and educational events.</p></div>
+    <div class="blog-card"><h3>Story 4</h3><p>Personal stories of resilience, motivation, and the power of community engagement.</p></div>
   </div>
 </div>
 
@@ -247,18 +244,22 @@ footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6
   <h2>Professional Work 💼</h2>
   <div class="work-item">
     <h3>Documentation Officer</h3>
-    <p>Details of work at Right & Associates...</p>
+    <p>Handling all student documentation, application processing, and correspondence. Ensuring accuracy and timely delivery of all documents.</p>
   </div>
   <div class="work-item">
     <h3>Student Support & Guidance</h3>
-    <p>Providing one-on-one mentorship...</p>
+    <p>One-on-one mentorship sessions for students seeking study opportunities abroad, providing guidance, resources, and encouragement.</p>
+  </div>
+  <div class="work-item">
+    <h3>Workshops & Seminars</h3>
+    <p>Planning and conducting workshops for students on career planning, education, and personal development.</p>
   </div>
 </div>
 
 <!-- ===== CONTACT ===== -->
 <div id="contact" class="section">
   <h2>Contact Me 📬</h2>
-  <p>Connect with me through:</p>
+  <p>Feel free to connect with me through any of the channels below:</p>
   <div class="contact-links">
     <a href="mailto:abishmanepal@gmail.com">Email</a>
     <a href="https://facebook.com/abishma.nepal" target="_blank">Facebook</a>
@@ -272,10 +273,12 @@ footer { text-align:center; padding:25px; background:linear-gradient(135deg,#ff6
 </footer>
 
 <script>
-function showSection(id){
-  document.querySelectorAll('.section').forEach(sec=>sec.classList.remove('active'));
+function showSection(id, link){
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
+  
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  link.classList.add('active');
 }
 </script>
 
